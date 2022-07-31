@@ -20,7 +20,7 @@ export function NotificationButton() {
       body: notifBody,
       icon: notifImg,
     };
-    let notif = new Notification(notifTitle, options);
+    new Notification(notifTitle, options);
     setTimeout(randomNotification, 1000);
   }
 
