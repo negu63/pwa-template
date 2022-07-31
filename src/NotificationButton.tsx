@@ -21,7 +21,6 @@ export function NotificationButton() {
       icon: notifImg,
     };
     new Notification(notifTitle, options);
-    setTimeout(randomNotification, 1000);
   }
 
   return (
