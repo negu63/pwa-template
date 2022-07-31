@@ -7,7 +7,7 @@ export function NotificationButton() {
     });
   }
 
-  function randomNotification() {
+  async function randomNotification() {
     const games = [
       { name: "sol game", author: "sol", slug: "eii" },
       { name: "sol game 2", author: "sol", slug: "eii 2" },
@@ -20,12 +20,19 @@ export function NotificationButton() {
       body: notifBody,
       icon: notifImg,
     };
-    new Notification(notifTitle, options);
+    navigator.serviceWorker
+      .getRegistration("/service-worker.js")
+      .then((reg) => {
+        console.log(reg);
+        reg?.showNotification(notifTitle, options);
+      });
   }
 
   return (
     <>
-      <button onClick={setPermission}>Request Notification</button>
+      <button id="" onClick={setPermission}>
+        Request Notification
+      </button>
     </>
   );
 }
