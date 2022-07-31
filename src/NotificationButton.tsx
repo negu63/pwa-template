@@ -7,10 +7,11 @@ export function NotificationButton() {
     });
   }
 
-  async function randomNotification() {
+  function randomNotification() {
     const games = [
       { name: "sol game", author: "sol", slug: "eii" },
       { name: "sol game 2", author: "sol", slug: "eii 2" },
+      { name: "sol game 3", author: "sol", slug: "eii 3" },
     ];
     let randomItem = Math.floor(Math.random() * games.length);
     let notifTitle = games[randomItem].name;
@@ -23,7 +24,6 @@ export function NotificationButton() {
     navigator.serviceWorker
       .getRegistration("/service-worker.js")
       .then((reg) => {
-        console.log(reg);
         reg?.showNotification(notifTitle, options);
       });
   }
