@@ -9,7 +9,7 @@ export function FriendList({ minAge = 1, maxAge = 200 }) {
       .toArray();
 
     return friends;
-  });
+  }, [minAge, maxAge]);
 
   return (
     <ul>
