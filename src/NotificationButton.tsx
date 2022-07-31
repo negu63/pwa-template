@@ -15,19 +15,18 @@ export function NotificationButton() {
     let randomItem = Math.floor(Math.random() * games.length);
     let notifTitle = games[randomItem].name;
     let notifBody = "Created by " + games[randomItem].author + ".";
-    let notifImg = "data/img/" + games[randomItem].slug + ".jpg";
+    let notifImg = "./bell.png";
     let options = {
       body: notifBody,
       icon: notifImg,
     };
     let notif = new Notification(notifTitle, options);
-    console.log(notif);
     setTimeout(randomNotification, 1000);
   }
 
   return (
     <>
-      <button onClick={setPermission}>Set Permission</button>
+      <button onClick={setPermission}>Request Notification</button>
     </>
   );
 }
