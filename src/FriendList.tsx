@@ -5,7 +5,7 @@ export function FriendList({ minAge = 1, maxAge = 200 }) {
   const friends = useLiveQuery(async () => {
     const friends = await db.friends
       .where("age")
-      .between(minAge, maxAge)
+      .between(minAge, maxAge + 1)
       .toArray();
 
     return friends;
