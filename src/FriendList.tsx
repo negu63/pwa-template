@@ -1,8 +1,15 @@
 import { db } from "./db";
 import { useLiveQuery } from "dexie-react-hooks";
 
-export function FriendList() {
-  const friends = useLiveQuery(() => db.friends.toArray());
+export function FriendList({ minAge = 1, maxAge = 200 }) {
+  const friends = useLiveQuery(async () => {
+    const friends = await db.friends
+      .where("age")
+      .between(minAge, maxAge)
+      .toArray();
+
+    return friends;
+  });
 
   return (
     <ul>
